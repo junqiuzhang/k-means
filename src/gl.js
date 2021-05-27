@@ -4,7 +4,7 @@ const width = 4;
 const height = 4;
 const glContext = gl(width, height, { preserveDrawingBuffer: true });
 const vsSource = `
-attribute vec4 a_Position;
+attribute vec3 a_Position;
 void main() {
   gl_Position = a_Position;
 }
@@ -24,26 +24,26 @@ const glProgram = initWebglProgram({
 glContext.clearColor(0, 0, 0, 0);
 glContext.clear(glContext.COLOR_BUFFER_BIT);
 
-var vertices = new Float32Array([
+const vertices = new Float32Array([
   -1.0,  1.0,  0.0,
    1.0,  1.0,  0.0,
   -1.0, -1.0,  0.0,
    1.0, -1.0,  0.0
 ]);
 
-var buffer = glContext.createBuffer();
+const buffer = glContext.createBuffer();
 
 glContext.bindBuffer(glContext.ARRAY_BUFFER, buffer);
 glContext.bufferData(glContext.ARRAY_BUFFER, vertices, glContext.STATIC_DRAW);
 
-var a_Position = glContext.getAttribLocation(glProgram, 'a_Position');
+const a_Position = glContext.getAttribLocation(glProgram, 'a_Position');
 
 glContext.vertexAttribPointer(a_Position, 3, glContext.FLOAT, false, 0, 0);
 glContext.enableVertexAttribArray(a_Position);
 
 glContext.drawArrays(glContext.TRIANGLE_STRIP, 0, 4);
 
-var pixels = new Float32Array(width * height * 4);
+const pixels = new Float32Array(width * height * 4);
 glContext.readPixels(
   0,
   0,
