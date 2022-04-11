@@ -1,2 +1,2 @@
-# k-means
+# k-means-algorithm
 k-means algorithm
