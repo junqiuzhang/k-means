@@ -1,1 +1,1 @@
-# k means algorithm
+# K-Means algorithm
